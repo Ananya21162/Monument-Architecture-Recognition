@@ -103,7 +103,15 @@ def folder_upload():
     
     classes = os.listdir(app.config['UPLOAD_PATH'])
     return render_template('admin.html', title=title, architectures= classes)  
-            
+
+name = ['SVM']
+@app.route('/model', methods= ['GET', 'POST'])
+def select_model():
+    if request.method == 'POST':
+        model_name = str(request.form.get("Model"))
+    name[0]= model_name
+    return render_template('admin.html')
+          
 
 @app.route('/upload/<directory>/<filename>')
 def send_dataset(directory, filename):
@@ -306,7 +314,7 @@ def model(filepath):
 #     Y= np.load(g)
 
 # archi = model_svm(X,Y,a)
-    f = "/home/dev/apps/ananya21162/Monument-Architecture-Recognition/SVM.sav"
+    f = f"/home/dev/apps/ananya21162/Monument-Architecture-Recognition/{name[0]}.sav"
     loaded_model=joblib.load(f)
     
     y_pred = loaded_model.predict(a)
