@@ -314,6 +314,7 @@ def model(filepath):
 #     Y= np.load(g)
 
 # archi = model_svm(X,Y,a)
+    print(name[0])
     f = f"/home/dev/apps/ananya21162/Monument-Architecture-Recognition/{name[0]}.sav"
     loaded_model=joblib.load(f)
     
