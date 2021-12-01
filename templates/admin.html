@@ -47,8 +47,8 @@
       </style>   
     <div class="btn-group">
     <form>
-        <button type="submit" style="font-weight: bold;" formaction="http://localhost:5000/">Home</button>
-        <button type="submit" style="font-weight: bold;" formaction="http://localhost:5000/admin">Reset</button>
+        <button type="submit" style="font-weight: bold;" formaction="/">Home</button>
+        <button type="submit" style="font-weight: bold;" formaction="/admin">Reset</button>
       </form>
     </div>
     <br> 
@@ -111,8 +111,9 @@
         <option value="Sikh">Sikh</option>
         <option value="None">Not a monument</option>
         </select>
-        <button type="submit" style="font-weight: bold;" formaction="http://localhost:5000/admin">Submit</button> <!--- Save this info to database-->
+        <button type="submit" style="font-weight: bold;" formaction="/admin">Submit</button> <!--- Save this info to database-->
       </form>
+      
      <br>
      
      <br/>
@@ -121,34 +122,32 @@
      <form action="#" method="post" enctype="multipart/form-data"> 
       Type Folder Name:<input type="text" name="foldername" /><br/><br/>
       Select Folder to Upload: <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" /><br/><br/> 
-      <input type="Submit" value="Upload" name="upload" formaction="http://localhost:5000/folder"/>
+      <input type="Submit" value="Upload" name="upload" formaction="/folder"/>
       </form>
     </div>
+      
+      <br/> <br/> <br/>
+      <form method = "post" >
+      <label for = "Model"> Select Model for prediction: </label>
+      <select name="Model" id="Model">
+      <option value="SVM">SVM</option>
+      <option value="KNN">KNN</option>
+      <option value="RF">RF</option>
+      <input type="Submit" value="Submit" name="submit" formaction="/model"/>
+      </select>
+      </form>
     <!-- <h3> Dataset for different Monument Architectures: </h3> -->
     <div class="w3-container" style = "margin :0px auto">
       
           
       <form method="post">
-        <div class="w3-show-inline-block">
-          <div class="w3-bar">
-        <button type="submit" class="w3-btn w3-teal" button style="font-weight: bold;" formaction="http://localhost:5000/ancient">Ancient</button>
-        <button type="submit" class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/british">British</button>
-        <button type="submit" class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/indo">IndoIslamic</button>
-      </div>
-    </div>
-    <div class="w3-show-inline-block">
-      <div class="w3-bar">
-        <button type="submit" class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/maratha">Maratha</button>
-        <button type="submit" class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/notmonument">Not a Monument</button>
-        <button type="submit"  class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/sikh">Sikh</button>
-      </div>
-      
-    </div>
+        
+   
     <div class="w3-show-inline-block">
     <div class="w3-bar">
     {% for archs in architectures %}
     <!-- <button type="submit" class="w3-btn w3-teal" style="font-weight: bold;" formaction="http://localhost:5000/dataset">{{archs}}</button> -->
-    <input type="submit" name="submit_button" value="{{archs}}" formaction="http://localhost:5000/dataset"/> 
+    <input type="submit" class="w3-btn w3-teal" style="font-weight: bold;" name="submit_button" value="{{archs}}" formaction="http://localhost:5000/dataset"/> 
     {% endfor %}
       </form>
     </div>
