@@ -56,8 +56,8 @@ def predict():
             filepath= os.path.join(app.config['PATH'], filename)
             print(filepath)
             f.save(filepath)
-            arch = model(filepath)
-            return render_template('home.html', title=title, message= message, architecture= arch)
+            arch,mod = model(filepath)
+            return render_template('home.html', title=title, message= message, architecture= arch, model=mod)
     return render_template('home.html', title=title, architecture ="")   
             
 
@@ -317,14 +317,14 @@ def model(filepath):
     print(name[0])
     f = f"/home/dev/apps/ananya21162/Monument-Architecture-Recognition/{name[0]}.sav"
     loaded_model=joblib.load(f)
-    
+    m= name[0]
     y_pred = loaded_model.predict(a)
     #print("accuracy is {}".format(accuracy_score(Y_test, y_pred)))
     print(y_pred)
     ind = int(y_pred[5])
     #model_KNN(X,Y,a)
     #model_randomforest(X,Y,a)
-    return list[ind]
+    return list[ind],m
         
        
     
